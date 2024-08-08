@@ -11,3 +11,11 @@ REPORT_GAS=true npx hardhat test
 npx hardhat node
 npx hardhat ignition deploy ./ignition/modules/Lock.js
 ```
+
+
+//Execute the contract
+```shell
+npx hardhat node // keep this running
+npx hardhat run scripts/deploy.js --network localhost -- copy the address and paste it in interact-local.js on 5th line
+npx hardhat run scripts/interact-local.js --network localhost 
+```
