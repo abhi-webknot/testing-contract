@@ -5,27 +5,29 @@ async function main() {
   const saveConversionRate = await SaveConversionRate.attach("0x5FbDB2315678afecb367f032d93F642f64180aa3");
 
   // Save a conversion rate
-  // await saveConversionRate.saveConversionRate(
-  //   "USD",
-  //   "US Dollar",
-  //   "EUR",
-  //   "Euro",
-  //   100000, // conversionA
-  //   200000, // conversionB
-  //   300000, // conversionC
-  //   400000, // conversionD
-  //   "2023-08-08",
-  //   "2023-12-31"
-  // );
-  // console.log("Conversion rate saved");
+  await saveConversionRate.saveConversionRate(
+    "CURR1 ID",
+    "CURR1 NAME!",
+    "CURR2 ID",
+    "CURR2 NAME",
+    100000, // conversionA
+    200000, // conversionB
+    300000, // conversionC
+    400000, // conversionD
+    "2023-08-08",
+    "2023-12-31"
+  );
+  console.log("Conversion rate saved");
 
-  // // Get conversion rate count
-  // const count = await saveConversionRate.conversionRateCount();
-  // console.log("Conversion rate count:", count.toString());
+  // Get conversion rate count
+  const count = await saveConversionRate.conversionRateCount();
+  console.log("Conversion rate count:", count.toString());
 
   // Get the latest conversion rate
-  // const latestIndex = count - 1n;
-  const conversionRate = await saveConversionRate.getConversionRate(0);
+  const firstConversionRate=count-2n;
+  const secondConversionRate = count - 1n;
+  
+  const conversionRate = await saveConversionRate.getConversionRate(firstConversionRate);
   console.log("Conversion Rate 1");
 
   console.log("Conversion Rate with named properties:");
@@ -38,7 +40,7 @@ async function main() {
   console.log("startDate:", conversionRate.startDate);
   console.log("endDate:", conversionRate.endDate);
 
-  const conversionRate1 = await saveConversionRate.getConversionRate(1);
+  const conversionRate1 = await saveConversionRate.getConversionRate(secondConversionRate);
   console.log("Conversion Rate 2");
 
   console.log("Conversion Rate with named properties:");
